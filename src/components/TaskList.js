@@ -39,7 +39,6 @@ class TaskList extends React.Component {
    
 
              <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                  
                       <table className="table table-bordered table-hover">
                         <thead>
                           <tr>
@@ -60,7 +59,6 @@ class TaskList extends React.Component {
                                    value = {filterName }
                                     onChange = {this.onChange }
                                    />
-
                             </td>
                             <td>
                                 <select name="filterStatus" 

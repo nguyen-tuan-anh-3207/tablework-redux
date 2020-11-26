@@ -40,6 +40,7 @@ class TaskForm extends React.Component {
         console.log(this.state);
     }
     onCloseForm =()=> {
+      //this.props.onCloseForm();
       this.props.onCloseForm();
     }
 
@@ -129,6 +130,9 @@ const mapDispatchToProps = (dispatch,props) => {
   return {
     onAddTask: (task) => {
       dispatch(actions.addTask(task));
+    },
+    onCloseForm: ()=>{
+      dispatch(actions.closeForm())
     }
   }
 }
