@@ -23,7 +23,7 @@ class TaskList extends React.Component {
     })
   }
   render(){
-    console.log(this.props.todos);
+    //console.log(this.props.todos);
     var {filterName, filterStatus} = this.state;
     var {tasks} = this.props;
     var eleTasks = tasks.map((task,index) => {
@@ -85,13 +85,13 @@ class TaskList extends React.Component {
 }
 }
 
-const mapStateToProp = (state) =>{
+const mapStateToProps = (state) =>{
     return {
       tasks : state.tasks
     }
 };
 
-export default connect(mapStateToProp, null)(TaskList);
+export default connect(mapStateToProps, null)(TaskList);
 
 
 

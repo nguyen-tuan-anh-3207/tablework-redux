@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props){
         super(props);
         this.state = {
-          tasks : [], //id, name, status
+          //tasks : [], //id, name, status
           isDisplayForm : false,
           taskEditing : null,
           filter : {name: '',
@@ -22,22 +22,15 @@ class App extends React.Component {
         }
   }
 
-  componentWillMount() {
-    if (localStorage && localStorage.getItem('tasks')){
-      var tasks = JSON.parse(localStorage.getItem('tasks'));
-      this.setState({
-        tasks : tasks
-      });
-    }
-  }
+  // componentWillMount() {
+  //   if (localStorage && localStorage.getItem('tasks')){
+  //     var tasks = JSON.parse(localStorage.getItem('tasks'));
+  //     this.setState({
+  //       tasks : tasks
+  //     });
+  //   }
+  // }
 
-
-   s4() {
-    return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
- }
-  generateId= ()=>{
-    return this.s4() + this.s4() + this.s4() + this.s4();
-  }
 
   onToggleForm = () =>{
     if (this.state.isDisplayForm && this.state.taskEditing !==null) {
@@ -155,42 +148,42 @@ class App extends React.Component {
   }
 
   render(){
-    var {tasks, isDisplayForm, taskEditing, filter,keyword,sort} = this.state // var tasks = this.state.tasks;
+    var { isDisplayForm, taskEditing, filter,keyword,sort} = this.state // var tasks = this.state.tasks;
     //console.log(filter);
-    if(filter){
-      if(filter.name){
-         tasks = tasks.filter(task =>{
-          return task.name.toLowerCase().indexOf(filter.name) !==-1;
-        })
-      }
+//     if(filter){
+//       if(filter.name){
+//          tasks = tasks.filter(task =>{
+//           return task.name.toLowerCase().indexOf(filter.name) !==-1;
+//         })
+//       }  
 
-        tasks = tasks.filter(task =>{
-          if (filter.status === -1){
-            return tasks;
-          }else {
-            return task.status === (filter.status === 1? true: false)
-          }
-        })
+//         // tasks = tasks.filter(task =>{
+//         //   if (filter.status === -1){
+//         //     return tasks;
+//         //   }else {
+//         //     return task.status === (filter.status === 1? true: false)
+//         //   }
+//         // })
         
-    };
+//     };
 
-    if(keyword){
-      tasks = tasks.filter(task =>{
-        return task.name.toLowerCase().indexOf(keyword) !==-1;
-    })
-  }
-//sort
-if( sort.by === 'name'){
-    tasks.sort((a,b) =>{
-      if (a.name >b.name) return sort.value;
-      else if (a.name < b.name) return -sort.value;
-      else return 0;
-    })}else {
-      tasks.sort((a,b) =>{
-        if (a.status >b.status) return -sort.value;
-        else if (a.status < b.status) return sort.value;
-        else return 0;
-      }) };
+//     if(keyword){
+//       tasks = tasks.filter(task =>{
+//         return task.name.toLowerCase().indexOf(keyword) !==-1;
+//     })
+//   }
+// //sort
+// if( sort.by === 'name'){
+//     tasks.sort((a,b) =>{
+//       if (a.name >b.name) return sort.value;
+//       else if (a.name < b.name) return -sort.value;
+//       else return 0;
+//     })}else {
+//       tasks.sort((a,b) =>{
+//         if (a.status >b.status) return -sort.value;
+//         else if (a.status < b.status) return sort.value;
+//         else return 0;
+//       }) };
 
      var eleTaskForm = isDisplayForm ? <TaskForm
                                            onCloseForm = {this.onCloseForm}
