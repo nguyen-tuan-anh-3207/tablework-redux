@@ -188,12 +188,6 @@ class App extends React.Component {
 //         else if (a.status < b.status) return sort.value;
 //         else return 0;
 //       }) };
-
-     var eleTaskForm = isDisplayForm ? <TaskForm
-                                           //onCloseForm = {this.onCloseForm}
-                                            //onSubmit = {this.onSubmit} 
-                                            task = {taskEditing}
-                                           /> : ''; 
   return (
     <div className="container">
       <div className="text-center">
@@ -201,7 +195,11 @@ class App extends React.Component {
     </div>  
       <div className="row">
       <div className= {isDisplayForm? 'col-xs-4 col-sm-4 col-md-4 col-lg-4': ''}>
-            {eleTaskForm}
+            {<TaskForm
+                //onCloseForm = {this.onCloseForm}
+                //onSubmit = {this.onSubmit} 
+                task = {taskEditing}
+                />}
       </div>
       <div className={isDisplayForm? 'col-xs-8 col-sm-8 col-md-8 col-lg-8' : 'col-xs-12 col-sm-12 col-md-12 col-lg-12'}>
              <button  type="button" 
