@@ -1,4 +1,6 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import * as actions from './../actions/index';
 
 
 
@@ -26,7 +28,8 @@ class TaskItem extends React.Component {
                             <td className="text-center">
                               <span 
                                   className= { task.status === true? 'label label-danger' : 'label label-success'}
-                                  onClick = {this.onUpdateStatus}>
+                                  onClick = {this.onUpdateStatus}
+                                  >
                               {task.status=== true? 'Kích hoạt' : 'Ẩn'}
                               </span>
                             </td>
@@ -53,7 +56,21 @@ class TaskItem extends React.Component {
 }
 }
 
-export default TaskItem;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    
+  }
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+      onUpdateStatus : (id)=>{
+        dispatch(actions.updateStatus(id))
+      }
+    }
+  };
+
+export default connect(mapStateToProps,mapDispatchToProps )(TaskItem);
 
 
 

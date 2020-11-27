@@ -78,18 +78,18 @@ class App extends React.Component {
   //   localStorage.setItem('tasks', JSON.stringify(tasks));
 
   // }
-  onUpdateStatus =(id)=>{
-      //console.log(id);
-      var {tasks} = this.state;
-      var index = this.findIndex(id);
-      if ( index !== -1 ) {
-        tasks[index].status = !tasks[index].status;
-      }
-      this.setState({
-        tasks : tasks
-      })
-      localStorage.setItem('tasks', JSON.stringify(tasks))
-  }
+  // onUpdateStatus =(id)=>{
+  //     //console.log(id);
+  //     var {tasks} = this.state;
+  //     var index = this.findIndex(id);
+  //     if ( index !== -1 ) {
+  //       tasks[index].status = !tasks[index].status;
+  //     }
+  //     this.setState({
+  //       tasks : tasks
+  //     })
+  //     localStorage.setItem('tasks', JSON.stringify(tasks))
+  // }
 
   findIndex =(id)=> {
       var {tasks} = this.state;
@@ -220,7 +220,7 @@ class App extends React.Component {
              {/*list */}
                   <TaskList 
                             
-                            onUpdateStatus = {this.onUpdateStatus}
+                            //onUpdateStatus = {this.onUpdateStatus}
                             onDelete = {this.onDelete}
                             onUpdate = {this.onUpdate}
                             onFilter = {this.onFilter}
