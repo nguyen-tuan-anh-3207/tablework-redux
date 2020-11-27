@@ -34,3 +34,10 @@ export const updateStatus = (id)=>{
         id //id = id
     }
 }
+
+export const deleteTask = (id)=>{
+    return {
+        type: types.DELETE_TASK,
+        id
+    }
+}

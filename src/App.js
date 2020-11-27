@@ -100,18 +100,18 @@ class App extends React.Component {
       return result;
   }
 
-  onDelete =(id) =>{
-    var {tasks} = this.state;
-    var index = this.findIndex(id);
-    if ( index !== -1 ) {
-      tasks.splice(index, 1);
-    }
-    this.setState({
-      tasks : tasks
-    })
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    this.onCloseForm();
-  }
+  // onDelete =(id) =>{
+  //   var {tasks} = this.state;
+  //   var index = this.findIndex(id);
+  //   if ( index !== -1 ) {
+  //     tasks.splice(index, 1);
+  //   }
+  //   this.setState({
+  //     tasks : tasks
+  //   })
+  //   localStorage.setItem('tasks', JSON.stringify(tasks));
+  //   this.onCloseForm();
+  // }
 
   onUpdate =(id) => {
     var {tasks} = this.state;
@@ -221,7 +221,7 @@ class App extends React.Component {
                   <TaskList 
                             
                             //onUpdateStatus = {this.onUpdateStatus}
-                            onDelete = {this.onDelete}
+                           // onDelete = {this.onDelete}
                             onUpdate = {this.onUpdate}
                             onFilter = {this.onFilter}
                             />
