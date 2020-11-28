@@ -13,31 +13,27 @@ class TaskForm extends React.Component {
     }
 
     UNSAFE_componentWillReceiveProps(nextProps) {
-      if ( nextProps && nextProps.task){
+      if ( nextProps && nextProps.itemEditing){
         this.setState({
-          id : nextProps.task.id,
-          name : nextProps.task.name,
-          status : nextProps.task.status
+          id : nextProps.itemEditing.id,
+          name : nextProps.itemEditing.name,
+          status : nextProps.itemEditing.status
         })
-      } else if (!nextProps.task) {
+      } else if (!nextProps.itemEditing) {
         console.log('sửa -> thêm');
-        this.setState({
-          name : '',
-          status : false,
-          id : ''
-        });
+        this.onClear();
       }
       //console.log(this.state);
   }
   UNSAFE_componentWillMount(){
-        if ( this.props.task){
+        if ( this.props.itemEditing){
           this.setState({
-            id : this.props.task.id,
-            name : this.props.task.name,
-            status : this.props.task.status
+            id : this.props.itemEditing.id,
+            name : this.props.itemEditing.name,
+            status : this.props.itemEditing.status
           })
         }
-        console.log(this.state);
+        //console.log(this.state);
     }
     onCloseForm =()=> {
       //this.props.onCloseForm();
@@ -56,11 +52,11 @@ class TaskForm extends React.Component {
         });
     }
 
-    onSubmit =(event)=> {
+    onSubmitForm =(event)=> {
       event.preventDefault();
      // console.log(this.state);
      //this.props.onSubmit(this.state);
-     this.props.onAddTask(this.state);
+     this.props.onSaveTask(this.state);
      this.onClear();
      this.onCloseForm();
     }
@@ -73,7 +69,7 @@ class TaskForm extends React.Component {
     }
     render(){
       var {id} =this.state;
-      if (!this.props.isDisplayForm) return '';
+      if (!this.props.isDisplayForm) return null;
         return(
           <div className="panel panel-warning">
           <div className="panel-heading">
@@ -86,7 +82,7 @@ class TaskForm extends React.Component {
             </span> </h3>
           </div>
           <div className="panel-body">
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmitForm}>
                   <div className="form-group">
                     <label >Tên :</label>
                     <input type="text" 
@@ -123,14 +119,15 @@ class TaskForm extends React.Component {
 }
 const mapStateToProps = (state ) => {
   return {
-    isDisplayForm : state.isDisplayForm
+    isDisplayForm : state.isDisplayForm,
+    itemEditing : state.itemEditing
   }
 }
 
 const mapDispatchToProps = (dispatch,props) => {
   return {
-    onAddTask: (task) => {
-      dispatch(actions.addTask(task));
+    onSaveTask: (task) => {
+      dispatch(actions.saveTask(task));
     },
     onCloseForm: ()=>{
       dispatch(actions.closeForm())

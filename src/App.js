@@ -13,7 +13,7 @@ class App extends React.Component {
         this.state = {
           //tasks : [], //id, name, status
           //isDisplayForm : false,
-          taskEditing : null,
+          //taskEditing : null,
           filter : {name: '',
                     status: -1},
           keyword: '',
@@ -45,7 +45,17 @@ class App extends React.Component {
     //     taskEditing: null
     //   })
     // }
-    this.props.onToggleForm();
+    var {itemEditing} = this.props;
+    if ( itemEditing && itemEditing.id !== ''){
+      this.props.onOpenForm();
+    }else{
+      this.props.onToggleForm();
+    }
+    this.props.onClearTask({
+      id: '',
+      name: '',
+      status: false
+    });
   }
 
   // onCloseForm =()=>{
@@ -113,16 +123,6 @@ class App extends React.Component {
   //   this.onCloseForm();
   // }
 
-  onUpdate =(id) => {
-    var {tasks} = this.state;
-    var index = this.findIndex(id);
-    var taskEditing = tasks[index];
-    this.setState({
-      taskEditing : taskEditing
-    });
-    this.onShowForm();
-  }
-
   onFilter =(filterName, filterStatus) => {
     //kiểu dữ liệu của filterStatus đang là string
     console.log(filterName + ' ' + filterStatus);
@@ -151,9 +151,8 @@ class App extends React.Component {
   }
 
   render(){
-    var { taskEditing, filter,keyword,sort} = this.state // var tasks = this.state.tasks;
+    var {  filter,keyword,sort} = this.state // var tasks = this.state.tasks;
     var {isDisplayForm} = this.props;
-    //console.log(filter);
 //     if(filter){
 //       if(filter.name){
 //          tasks = tasks.filter(task =>{
@@ -198,7 +197,7 @@ class App extends React.Component {
             {<TaskForm
                 //onCloseForm = {this.onCloseForm}
                 //onSubmit = {this.onSubmit} 
-                task = {taskEditing}
+                //task = {taskEditing}
                 />}
       </div>
       <div className={isDisplayForm? 'col-xs-8 col-sm-8 col-md-8 col-lg-8' : 'col-xs-12 col-sm-12 col-md-12 col-lg-12'}>
@@ -220,7 +219,7 @@ class App extends React.Component {
                             
                             //onUpdateStatus = {this.onUpdateStatus}
                            // onDelete = {this.onDelete}
-                            onUpdate = {this.onUpdate}
+                            //onUpdate = {this.onUpdate}
                             onFilter = {this.onFilter}
                             />
              </div>
@@ -232,7 +231,8 @@ class App extends React.Component {
 }
 const mapStateToProps = (state, ownProps) => {
   return {
-      isDisplayForm : state.isDisplayForm
+      isDisplayForm : state.isDisplayForm,
+      itemEditing : state.itemEditing
   }
 }
 
@@ -240,6 +240,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onToggleForm: ()=>{
       dispatch(actions.toggleForm())
+    },
+    onClearTask: (task) => {
+      dispatch(actions.editTask(task));
+    },
+    onOpenForm: ()=>{
+      dispatch(actions.openForm())
     }
   }
 }
