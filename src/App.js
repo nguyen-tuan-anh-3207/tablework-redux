@@ -14,8 +14,6 @@ class App extends React.Component {
           //tasks : [], //id, name, status
           //isDisplayForm : false,
           //taskEditing : null,
-          filter : {name: '',
-                    status: -1},
           keyword: '',
           sort :{
             by:'',
@@ -123,17 +121,17 @@ class App extends React.Component {
   //   this.onCloseForm();
   // }
 
-  onFilter =(filterName, filterStatus) => {
-    //kiểu dữ liệu của filterStatus đang là string
-    console.log(filterName + ' ' + filterStatus);
-    filterStatus = parseInt(filterStatus,10); // --> chuyển sang number
-    this.setState({ 
-      filter :{
-      name : filterName.toLowerCase(),
-      status : filterStatus
-    }})
+  // onFilter =(filterName, filterStatus) => {
+  //   //kiểu dữ liệu của filterStatus đang là string
+  //   console.log(filterName + ' ' + filterStatus);
+  //   filterStatus = parseInt(filterStatus,10); // --> chuyển sang number
+  //   this.setState({ 
+  //     filter :{
+  //     name : filterName.toLowerCase(),
+  //     status : filterStatus
+  //   }})
 
-  }
+  // }
   onSearch = (keyword)=> {
       console.log(keyword);
       this.setState({
@@ -151,30 +149,10 @@ class App extends React.Component {
   }
 
   render(){
-    var {  filter,keyword,sort} = this.state // var tasks = this.state.tasks;
+    //var {  filter,keyword,sort} = this.state // var tasks = this.state.tasks;
     var {isDisplayForm} = this.props;
-//     if(filter){
-//       if(filter.name){
-//          tasks = tasks.filter(task =>{
-//           return task.name.toLowerCase().indexOf(filter.name) !==-1;
-//         })
-//       }  
 
-//         // tasks = tasks.filter(task =>{
-//         //   if (filter.status === -1){
-//         //     return tasks;
-//         //   }else {
-//         //     return task.status === (filter.status === 1? true: false)
-//         //   }
-//         // })
-        
-//     };
 
-//     if(keyword){
-//       tasks = tasks.filter(task =>{
-//         return task.name.toLowerCase().indexOf(keyword) !==-1;
-//     })
-//   }
 // //sort
 // if( sort.by === 'name'){
 //     tasks.sort((a,b) =>{
@@ -220,7 +198,7 @@ class App extends React.Component {
                             //onUpdateStatus = {this.onUpdateStatus}
                            // onDelete = {this.onDelete}
                             //onUpdate = {this.onUpdate}
-                            onFilter = {this.onFilter}
+                            //onFilter = {this.onFilter}
                             />
              </div>
       </div>

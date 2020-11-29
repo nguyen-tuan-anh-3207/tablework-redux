@@ -48,3 +48,10 @@ export const editTask = (item) =>{
         item
     }
 }
+
+export const filterTask = (filter)=>{
+    return {
+        type: types.FILTER_TABLE,
+        filter // có filterName, filterStatus
+    }
+}
