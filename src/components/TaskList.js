@@ -31,7 +31,7 @@ class TaskList extends React.Component {
   render(){
     //console.log(this.props.todos);
     var {filterName, filterStatus} = this.state;
-    var {tasks,filterTable} = this.props; //lấy từ store
+    var {tasks,filterTable,keyword} = this.props; //lấy từ store
     if(filterTable){
       if(filterTable.name){
         console.log(filterTable);
@@ -49,11 +49,12 @@ class TaskList extends React.Component {
         })
         
     };
-  //   if(keyword){
-  //     tasks = tasks.filter(task =>{
-  //       return task.name.toLowerCase().indexOf(keyword) !==-1;
-  //   })
-  // }
+  // search
+    if(keyword){
+      tasks = tasks.filter(task =>{
+        return task.name.toLowerCase().indexOf(keyword) !==-1;
+    })
+  }
     var eleTasks = tasks.map((task,index) => {
       return <TaskItem  key= {task.id} 
                         index = {index}
@@ -114,7 +115,8 @@ class TaskList extends React.Component {
 const mapStateToProps = (state) =>{
     return {
       tasks : state.tasks,
-      filterTable : state.filterTable
+      filterTable : state.filterTable,
+      keyword : state.search
     }
 };
 
