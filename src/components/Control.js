@@ -8,7 +8,8 @@ class Control extends React.Component {
              <Search  //onSearch = { this.props.onSearch}
 
              />
-              <Sort onSort = {this.props.onSort} />
+              <Sort //onSort = {this.props.onSort} 
+              />
               </div>
         )
     }

@@ -8,20 +8,6 @@ import * as actions from './actions/index'
 
 class App extends React.Component {
 
-  constructor(props){
-        super(props);
-        this.state = {
-          //tasks : [], //id, name, status
-          //isDisplayForm : false,
-          //taskEditing : null,
-          keyword: '',
-          sort :{
-            by:'',
-            value: 1
-          }
-        }
-  }
-
   // componentWillMount() {
   //   if (localStorage && localStorage.getItem('tasks')){
   //     var tasks = JSON.parse(localStorage.getItem('tasks'));
@@ -99,14 +85,14 @@ class App extends React.Component {
   //     localStorage.setItem('tasks', JSON.stringify(tasks))
   // }
 
-  findIndex =(id)=> {
-      var {tasks} = this.state;
-      var result = -1;
-      tasks.forEach((task, index)=>{
-          if (task.id ===id) result = index;
-      })
-      return result;
-  }
+  // findIndex =(id)=> {
+  //     var {tasks} = this.state;
+  //     var result = -1;
+  //     tasks.forEach((task, index)=>{
+  //         if (task.id ===id) result = index;
+  //     })
+  //     return result;
+  // }
 
   // onDelete =(id) =>{
   //   var {tasks} = this.state;
@@ -132,21 +118,21 @@ class App extends React.Component {
   //   }})
 
   // }
-  onSearch = (keyword)=> {
-      console.log(keyword);
-      this.setState({
-        keyword : keyword
-      })
-  }
-  onSort =async(sortBy, sortValue) =>{
-    console.log(sortBy, sortValue);
-    await this.setState({
-      sort: {
-        by: sortBy,
-        value: sortValue
-      }
-    })
-  }
+  // onSearch = (keyword)=> {
+  //     console.log(keyword);
+  //     this.setState({
+  //       keyword : keyword
+  //     })
+  // }
+  // onSort =async(sortBy, sortValue) =>{
+  //   //console.log(sortBy, sortValue);
+  //   await this.setState({
+  //     sort: {
+  //       by: sortBy,
+  //       value: sortValue
+  //     }
+  //   })
+  // }
 
   render(){
     //var {  filter,keyword,sort} = this.state // var tasks = this.state.tasks;
@@ -187,8 +173,8 @@ class App extends React.Component {
               </button>&nbsp;
               {/*search -sort */}
                 <Control 
-                  onSearch = {this.onSearch}
-                  onSort = {this.onSort}
+                  //onSearch = {this.onSearch}
+                  //onSort = {this.onSort}
                 />
   
              <div className="row mt-15">
